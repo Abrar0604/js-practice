@@ -19,5 +19,5 @@ for(const i in o){
 //     console.log(a);
 // } )
 
-let j=ar.filter(i => i>=3)
+let j=ar.filter(i => i>=3).map(j=> j+10)
 console.log(j,typeof j);
