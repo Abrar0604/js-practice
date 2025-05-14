@@ -1,0 +1,13 @@
+-Js is an asynchronous language
+-Js is a single threaded language
+
+Blocking code and non-Blocking code
+
+Blocking code
+-block the flow of program
+-read file in sync
+
+non blocking code
+-does not block the flow of the program
+-read file in async
+

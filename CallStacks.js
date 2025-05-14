@@ -10,14 +10,14 @@
     > Phases in JS execution <
     1. Global execution (defines this variable)
     2. Memory creation phase (
-    a. assigns undefined value to all variables
-    b. assigns definition to functions)
+        a. assigns undefined value to all variables
+        b. assigns definition to functions)
     3. Execution phase(
-    a. assigns allocated values to variables 
-    b. performs logical and computational operatons
-    c. Inside each function a new temporary JS Execution context is created
-    d. return values from functions are forwarded to Parent Execution context
-    e. Temporary Execution context is deleted after execution)
+        a. assigns allocated values to variables 
+        b. performs logical and computational operatons
+        c. Inside each function a new temporary JS Execution context is created
+        d. return values from functions are forwarded to Parent Execution context
+        e. Temporary Execution context is deleted after execution)
 */
 
 
