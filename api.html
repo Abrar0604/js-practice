@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API- XMLHttp request</title>
+    <style>
+        body {
+            background-color: grey;
+        }
+        .container{
+            background-color: black;
+            color: aliceblue;
+            max-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        .container img{
+            max-width: 80%;
+        }
+        .container p{
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="in"><input class="inp" type="text"></form>
+
+    <div class="container"></div>
+</body>
+<script>
+    const container = document.querySelector('.container');
+    const input = document.querySelector('.in');
+    const inp = input.querySelector('.inp');
+    const req = new XMLHttpRequest()
+    const url = 'https://api.github.com/users/'
+    let name;
+    input.addEventListener('submit', (e) => {
+        e.preventDefault();
+        name = inp.value;
+        console.log(name)
+        let data;
+        req.open('GET', `${url}${name}`)
+        req.onreadystatechange =  function() {
+            console.log(req.readyState)
+            if (req.readyState === 4) {
+                data = JSON.parse(this.responseText);
+                console.log(data)
+                const avatar = data.avatar_url;
+                const followers = data.followers;
+                const following = data.following;
+                const public_repos = data.public_repos;
+                const im = document.createElement('img');
+                im.src = avatar;
+                let text = document.createElement('p');
+                text.textContent = `${name}`;
+                const table=document.createElement('table');
+                table.innerHTML=`
+                <tr>
+                    <th>Followers</th>
+                    <th>Following</th>
+                    <th>Public repos</th>
+                </tr>
+                <tr>
+                    <td>${followers}</td>
+                    <td>${following}</td>
+                    <td>${public_repos}</td>
+                </tr>
+                `
+                container.appendChild(im);
+                container.appendChild(text);
+                container.appendChild(table)
+            }
+        }
+        req.send();
+    })
+</script>
+
+</html>
